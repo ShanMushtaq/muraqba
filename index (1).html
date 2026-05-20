@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MURAQBA — Digital Marketing Agency</title>
+<meta name="description" content="MURAQBA is a results-first digital marketing agency based in Lahore, Pakistan. We help clothing brands and digital product sellers grow through Facebook & Instagram Ads. Pay after results."/>
+<meta property="og:title" content="MURAQBA — We Observe. We Target. We Scale."/>
+<meta property="og:description" content="Results-first digital marketing agency. You only pay after seeing real results."/>
+<meta name="theme-color" content="#1C1A15"/>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --cream:#F7F0E6;--sand:#E2CCB0;--primary:#9D9883;
+  --dark:#8A8370;--accent:#BE8E6F;--sidebar:#1C1A15;
+  --text:#28251E;--textmid:#5C5848;--textlight:#8A8370;
+  --parchment:#F6E7D1;--mist:#E8E9E1;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--text);}
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-thumb{background:var(--primary);border-radius:3px;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(28,26,21,0.97);backdrop-filter:blur(10px);padding:0 5%;}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:#fff;letter-spacing:0.14em;text-decoration:none;}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{font-size:12px;color:rgba(255,255,255,0.5);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover{color:#BE8E6F;}
+.nav-cta{padding:8px 20px;background:var(--accent);color:#fff;border-radius:4px;font-size:12px;letter-spacing:0.08em;text-decoration:none;transition:opacity 0.2s;}
+.nav-cta:hover{opacity:0.85;}
+.menu-toggle{display:none;background:none;border:none;cursor:pointer;color:#fff;font-size:22px;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 5% 60px;background:linear-gradient(160deg,var(--cream) 0%,var(--parchment) 55%,var(--mist) 100%);position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(190,142,111,0.08) 0%,transparent 70%);pointer-events:none;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border:1px solid var(--sand);border-radius:20px;font-size:11px;letter-spacing:0.15em;color:var(--textmid);text-transform:uppercase;margin-bottom:28px;background:rgba(255,255,255,0.5);}
+.hero-badge span{width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block;}
+.hero-icon{width:80px;height:80px;border-radius:50%;background:var(--sidebar);display:flex;align-items:center;justify-content:center;margin:0 auto 32px;box-shadow:0 12px 40px rgba(0,0,0,0.18);font-size:32px;color:var(--accent);}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,8vw,88px);font-weight:300;color:var(--text);letter-spacing:0.18em;line-height:1;}
+.hero-urdu{font-size:clamp(14px,2vw,18px);letter-spacing:0.22em;color:var(--textlight);margin-top:10px;}
+.hero-line{width:54px;height:1px;background:var(--accent);margin:24px auto;}
+.hero-slogan{font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.5vw,22px);color:var(--text);letter-spacing:0.08em;font-weight:500;}
+.hero-desc{max-width:560px;margin:20px auto 0;font-size:clamp(13px,1.5vw,15px);color:var(--textmid);line-height:1.8;}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:36px;}
+.btn-primary{padding:13px 30px;background:var(--sidebar);color:#fff;border-radius:5px;font-size:12px;letter-spacing:0.1em;text-decoration:none;text-transform:uppercase;transition:opacity 0.2s;font-weight:500;}
+.btn-primary:hover{opacity:0.85;}
+.btn-outline{padding:13px 30px;border:1px solid var(--sand);color:var(--text);border-radius:5px;font-size:12px;letter-spacing:0.1em;text-decoration:none;text-transform:uppercase;transition:all 0.2s;font-weight:500;}
+.btn-outline:hover{background:rgba(255,255,255,0.6);}
+.hero-swatches{display:flex;gap:8px;justify-content:center;margin-top:48px;flex-wrap:wrap;}
+.swatch{width:26px;height:26px;border-radius:50%;border:2px solid rgba(255,255,255,0.7);box-shadow:0 2px 8px rgba(0,0,0,0.08);}
+
+/* SECTIONS */
+section{padding:90px 5%;}
+.inner{max-width:1100px;margin:0 auto;}
+.sec-tag{font-size:10px;font-weight:700;letter-spacing:0.2em;color:var(--accent);text-transform:uppercase;margin-bottom:10px;}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,46px);font-weight:500;color:var(--text);line-height:1.1;}
+.sec-bar{width:44px;height:2px;background:var(--accent);margin:16px 0 20px;border-radius:1px;}
+.sec-sub{font-size:15px;color:var(--textmid);line-height:1.75;max-width:600px;}
+
+/* USP STRIP */
+.usp-strip{background:var(--sidebar);padding:60px 5%;}
+.usp-inner{max-width:1100px;margin:0 auto;text-align:center;}
+.usp-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3.5vw,36px);font-style:italic;color:#fff;line-height:1.4;margin-bottom:14px;}
+.usp-sub{font-size:13px;color:rgba(255,255,255,0.4);letter-spacing:0.1em;}
+.usp-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:40px;}
+.usp-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:22px 18px;text-align:left;}
+.usp-icon{font-size:22px;margin-bottom:12px;}
+.usp-card h3{font-size:14px;font-weight:600;color:#fff;margin-bottom:6px;}
+.usp-card p{font-size:12px;color:rgba(255,255,255,0.45);line-height:1.6;}
+
+/* SERVICES */
+.services-bg{background:var(--mist);}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:40px;}
+.svc-card{background:rgba(255,255,255,0.65);border:1px solid var(--sand);border-radius:8px;padding:26px 22px;transition:transform 0.2s,box-shadow 0.2s;}
+.svc-card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,0.07);}
+.svc-num{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:var(--accent);opacity:0.6;margin-bottom:10px;}
+.svc-card h3{font-size:15px;font-weight:600;color:var(--text);margin-bottom:8px;}
+.svc-card p{font-size:13px;color:var(--textmid);line-height:1.65;}
+
+/* PACKAGES */
+.pkg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:40px;}
+.pkg-card{border-radius:10px;padding:28px 22px;color:#fff;position:relative;overflow:hidden;}
+.pkg-card::before{content:'';position:absolute;top:-40px;right:-40px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,0.06);}
+.pkg-badge{font-size:9px;letter-spacing:0.2em;opacity:0.6;text-transform:uppercase;margin-bottom:6px;}
+.pkg-name{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:500;margin-bottom:6px;}
+.pkg-price{font-size:13px;opacity:0.7;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.15);}
+.pkg-item{font-size:12px;opacity:0.82;margin-bottom:6px;line-height:1.4;}
+.pkg-item::before{content:'✓ ';}
+.pkg-best{margin-top:16px;font-size:10px;opacity:0.45;background:rgba(0,0,0,0.12);padding:7px 10px;border-radius:4px;}
+
+/* NICHES */
+.niche-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:36px;}
+.niche-card{border-radius:8px;padding:30px 24px;border:1px solid var(--sand);}
+.niche-card.p{background:var(--sidebar);color:#fff;}
+.niche-card.s{background:rgba(255,255,255,0.65);}
+.niche-tag{font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:10px;}
+.niche-card.p .niche-tag{color:var(--accent);}
+.niche-card.s .niche-tag{color:var(--accent);}
+.niche-card h3{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;margin-bottom:10px;}
+.niche-card.p h3{color:#fff;}
+.niche-card.s h3{color:var(--text);}
+.niche-card p{font-size:13px;line-height:1.7;}
+.niche-card.p p{color:rgba(255,255,255,0.55);}
+.niche-card.s p{color:var(--textmid);}
+.niche-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px;}
+.ntag{padding:4px 12px;border-radius:20px;font-size:11px;}
+.niche-card.p .ntag{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.6);}
+.niche-card.s .ntag{background:var(--mist);color:var(--textmid);border:1px solid var(--sand);}
+
+/* PROCESS */
+.process-bg{background:var(--parchment);}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:36px;}
+.step-card{background:rgba(255,255,255,0.6);border:1px solid var(--sand);border-radius:8px;padding:22px 18px;position:relative;}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:300;color:var(--accent);opacity:0.5;line-height:1;margin-bottom:10px;}
+.step-card h3{font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px;}
+.step-card p{font-size:12px;color:var(--textmid);line-height:1.6;}
+
+/* GUARANTEE */
+.guarantee{background:var(--accent);padding:70px 5%;text-align:center;}
+.guarantee h2{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,42px);color:#fff;font-weight:500;margin-bottom:14px;}
+.guarantee p{font-size:15px;color:rgba(255,255,255,0.75);max-width:560px;margin:0 auto 28px;line-height:1.75;}
+.guarantee .btn-wh{padding:13px 32px;background:#fff;color:var(--accent);border-radius:5px;font-size:12px;letter-spacing:0.1em;text-decoration:none;text-transform:uppercase;font-weight:600;}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:40px;}
+.contact-info h3{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--text);margin-bottom:16px;}
+.contact-info p{font-size:14px;color:var(--textmid);line-height:1.8;margin-bottom:24px;}
+.contact-items{display:flex;flex-direction:column;gap:14px;}
+.c-item{display:flex;align-items:center;gap:14px;padding:14px 18px;background:rgba(255,255,255,0.6);border:1px solid var(--sand);border-radius:6px;}
+.c-icon{width:36px;height:36px;border-radius:50%;background:var(--sidebar);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px;}
+.c-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);}
+.c-val{font-size:13px;color:var(--text);margin-top:2px;}
+.contact-form{background:rgba(255,255,255,0.65);border:1px solid var(--sand);border-radius:8px;padding:28px 24px;}
+.contact-form h3{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--text);margin-bottom:20px;}
+.form-group{margin-bottom:16px;}
+.form-group label{display:block;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:10px 14px;background:rgba(255,255,255,0.8);border:1px solid var(--sand);border-radius:5px;font-size:13px;font-family:'Outfit',sans-serif;color:var(--text);outline:none;transition:border-color 0.2s;}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--accent);}
+.form-group textarea{height:100px;resize:vertical;}
+.form-submit{width:100%;padding:12px;background:var(--sidebar);color:#fff;border:none;border-radius:5px;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;font-family:'Outfit',sans-serif;font-weight:500;transition:opacity 0.2s;}
+.form-submit:hover{opacity:0.85;}
+
+/* FOOTER */
+footer{background:var(--sidebar);padding:50px 5% 30px;}
+.footer-inner{max-width:1100px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,0.06);}
+.footer-brand .f-name{font-family:'Cormorant Garamond',serif;font-size:22px;color:#fff;letter-spacing:0.14em;}
+.footer-brand .f-urdu{font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:0.18em;margin-top:3px;}
+.footer-brand p{font-size:12px;color:rgba(255,255,255,0.35);margin-top:14px;line-height:1.75;}
+.footer-col h4{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
+.footer-col ul{list-style:none;}
+.footer-col li{margin-bottom:9px;}
+.footer-col a{font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s;}
+.footer-col a:hover{color:rgba(255,255,255,0.7);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;flex-wrap:wrap;gap:10px;}
+.footer-bottom p{font-size:11px;color:rgba(255,255,255,0.2);}
+.footer-slogan{font-size:11px;color:rgba(255,255,255,0.2);letter-spacing:0.12em;}
+
+/* MOBILE */
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none;}
+  .menu-toggle{display:block;}
+  .nav-links.open{display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(28,26,21,0.98);padding:20px;gap:16px;}
+  .nav-links.open .nav-cta{display:block;text-align:center;}
+  .contact-grid{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr;}
+  .footer-col{display:none;}
+}
+@media(max-width:540px){
+  .steps{grid-template-columns:1fr 1fr;}
+  .usp-cards{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">MURAQBA</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#packages">Packages</a></li>
+      <li><a href="#niches">Who We Help</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact" class="nav-cta">Work With Us</a></li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-badge"><span></span>Lahore, Pakistan · Est. 2025</div>
+  <div class="hero-icon">◈</div>
+  <h1>MURAQBA</h1>
+  <div class="hero-urdu">مراقبہ · Focused Awareness</div>
+  <div class="hero-line"></div>
+  <div class="hero-slogan">WE OBSERVE. WE TARGET. WE SCALE.</div>
+  <p class="hero-desc">A results-first digital marketing agency helping clothing brands and digital product sellers grow through Facebook & Instagram advertising. You pay us only after seeing real results.</p>
+  <div class="hero-btns">
+    <a href="#contact" class="btn-primary">Work With Us</a>
+    <a href="#services" class="btn-outline">Our Services</a>
+  </div>
+  <div class="hero-swatches">
+    <div class="swatch" style="background:#9D9883"></div>
+    <div class="swatch" style="background:#F7F0E6"></div>
+    <div class="swatch" style="background:#E2CCB0"></div>
+    <div class="swatch" style="background:#C8BFAE"></div>
+    <div class="swatch" style="background:#BE8E6F"></div>
+    <div class="swatch" style="background:#8A8370"></div>
+  </div>
+</section>
+
+<!-- USP STRIP -->
+<div class="usp-strip">
+  <div class="usp-inner">
+    <div class="usp-quote">"You only pay us after you see the results we promised."</div>
+    <div class="usp-sub">NO RESULTS = NO PAYMENT · ZERO FINANCIAL RISK FOR YOU</div>
+    <div class="usp-cards">
+      <div class="usp-card"><div class="usp-icon">🎯</div><h3>Pay After Results</h3><p>We earn our fee only after hitting the milestone we agreed on together.</p></div>
+      <div class="usp-card"><div class="usp-icon">🗺️</div><h3>7-Day Action Plan</h3><p>Every client receives a clear 7-day plan on Day 1. No guessing, no waiting.</p></div>
+      <div class="usp-card"><div class="usp-icon">⚙️</div><h3>Full Setup from Scratch</h3><p>We build your entire digital presence — pages, content, ads, strategy — from zero.</p></div>
+      <div class="usp-card"><div class="usp-icon">👤</div><h3>Direct Founder Access</h3><p>Every client works directly with the founder — not a junior team member.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="services-bg">
+  <div class="inner">
+    <div class="sec-tag">What We Do</div>
+    <h2 class="sec-title">Our Services</h2>
+    <div class="sec-bar"></div>
+    <p class="sec-sub">We provide everything a new or growing brand needs to go from invisible to in-demand — under one roof.</p>
+    <div class="svc-grid">
+      <div class="svc-card"><div class="svc-num">01</div><h3>Facebook & Instagram Ads</h3><p>Full campaign setup, precision audience targeting, A/B tested creatives, weekly optimisation, and detailed performance reports.</p></div>
+      <div class="svc-card"><div class="svc-num">02</div><h3>Full Brand Setup from Scratch</h3><p>Facebook page + Instagram profile setup, bio writing, highlights, cover design, and link-in-bio — everything configured professionally.</p></div>
+      <div class="svc-card"><div class="svc-num">03</div><h3>Content Creation & Posting</h3><p>12–16 posts per month with captions, hashtag research, content calendar, and stories — all tailored to your brand voice.</p></div>
+      <div class="svc-card"><div class="svc-num">04</div><h3>Lead Generation Campaigns</h3><p>Targeted ad campaigns built specifically to generate leads and inquiries for your products or services — not just impressions.</p></div>
+      <div class="svc-card"><div class="svc-num">05</div><h3>Brand Roadmap Consultation</h3><p>A 7-day action plan and 30-day growth roadmap delivered to new brands who need clarity and direction before anything else.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section id="packages">
+  <div class="inner">
+    <div class="sec-tag">Investment</div>
+    <h2 class="sec-title">Packages</h2>
+    <div class="sec-bar"></div>
+    <p class="sec-sub">Three clear tiers built for different stages of growth. All packages include our results-first guarantee — you pay the remaining balance only after we deliver.</p>
+    <div class="pkg-grid">
+      <div class="pkg-card" style="background:#9D9883;">
+        <div class="pkg-badge">Package 01</div>
+        <div class="pkg-name">STARTER</div>
+        <div class="pkg-price">Starting from PKR 15,000 / month</div>
+        <div class="pkg-item">Brand setup (Facebook + Instagram)</div>
+        <div class="pkg-item">8 posts per month</div>
+        <div class="pkg-item">Basic page management</div>
+        <div class="pkg-item">Monthly performance snapshot</div>
+        <div class="pkg-best">Best for: New brands with zero online presence</div>
+      </div>
+      <div class="pkg-card" style="background:#8A8370;">
+        <div class="pkg-badge">Package 02</div>
+        <div class="pkg-name">GROWTH</div>
+        <div class="pkg-price">Starting from PKR 30,000 / month</div>
+        <div class="pkg-item">16 posts per month</div>
+        <div class="pkg-item">Facebook Ads management</div>
+        <div class="pkg-item">Monthly analytics report</div>
+        <div class="pkg-item">30-day brand roadmap</div>
+        <div class="pkg-best">Best for: Brands ready to run ads</div>
+      </div>
+      <div class="pkg-card" style="background:#BE8E6F;">
+        <div class="pkg-badge">Package 03</div>
+        <div class="pkg-name">SCALE</div>
+        <div class="pkg-price">Starting from PKR 55,000 / month</div>
+        <div class="pkg-item">Everything in Growth</div>
+        <div class="pkg-item">Lead generation campaigns</div>
+        <div class="pkg-item">Full content calendar</div>
+        <div class="pkg-item">Bi-weekly strategy calls</div>
+        <div class="pkg-best">Best for: Serious brands wanting consistent leads</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE HELP -->
+<section id="niches" style="background:var(--mist);">
+  <div class="inner">
+    <div class="sec-tag">Who We Help</div>
+    <h2 class="sec-title">Our Focus</h2>
+    <div class="sec-bar"></div>
+    <p class="sec-sub">We work with two specific types of businesses — because focus means better results for everyone.</p>
+    <div class="niche-grid">
+      <div class="niche-card p">
+        <div class="niche-tag">Primary Niche</div>
+        <h3>Women's Clothing Brands</h3>
+        <p>Online women's fashion brands on Instagram and Facebook — including abayas, casual wear, formal wear, streetwear, and modest fashion. New brands to growing ones.</p>
+        <div class="niche-tags">
+          <span class="ntag">Abayas</span><span class="ntag">Casual Wear</span><span class="ntag">Formal</span><span class="ntag">Modest Fashion</span><span class="ntag">Streetwear</span>
+        </div>
+      </div>
+      <div class="niche-card s">
+        <div class="niche-tag">Secondary Niche</div>
+        <h3>Digital Product Sellers</h3>
+        <p>Individuals and small businesses selling eBooks, online courses, Canva templates, coaching programs, and digital downloads through social media.</p>
+        <div class="niche-tags">
+          <span class="ntag">eBooks</span><span class="ntag">Courses</span><span class="ntag">Templates</span><span class="ntag">Coaching</span><span class="ntag">Digital Downloads</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="process-bg">
+  <div class="inner">
+    <div class="sec-tag">How It Works</div>
+    <h2 class="sec-title">Our Process</h2>
+    <div class="sec-bar"></div>
+    <p class="sec-sub">From first message to first results — here is exactly what happens when you work with MURAQBA.</p>
+    <div class="steps">
+      <div class="step-card"><div class="step-num">01</div><h3>Discovery Chat</h3><p>Free 15-minute call to understand your brand, goals, and current challenges.</p></div>
+      <div class="step-card"><div class="step-num">02</div><h3>Brand Audit</h3><p>We review your existing presence and identify exactly what needs to be fixed or built.</p></div>
+      <div class="step-card"><div class="step-num">03</div><h3>Roadmap Delivery</h3><p>You receive a clear 30-day growth roadmap before any work begins.</p></div>
+      <div class="step-card"><div class="step-num">04</div><h3>Setup & Launch</h3><p>We set up your pages, create content, and launch your first campaign — all within 7 days.</p></div>
+      <div class="step-card"><div class="step-num">05</div><h3>Results</h3><p>We track, optimise, and report — and you pay the balance only after seeing agreed results.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<div class="guarantee">
+  <h2>No Results. No Payment.</h2>
+  <p>We are confident enough in our strategy to only charge you after you see the results we agreed on. You take zero financial risk when you work with MURAQBA.</p>
+  <a href="#contact" class="btn-wh">Start with a Free Audit</a>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="inner">
+    <div class="sec-tag">Get In Touch</div>
+    <h2 class="sec-title">Work With Us</h2>
+    <div class="sec-bar"></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Let's talk about your brand</h3>
+        <p>Whether you're starting from scratch or trying to fix what's not working — reach out and we'll tell you honestly whether we can help.</p>
+        <div class="contact-items">
+          <div class="c-item"><div class="c-icon">✉</div><div><div class="c-label">Email</div><div class="c-val">dearshanmushtaq@gmail.com</div></div></div>
+          <div class="c-item"><div class="c-icon">📸</div><div><div class="c-label">Instagram</div><div class="c-val">@muraqba</div></div></div>
+          <div class="c-item"><div class="c-icon">f</div><div><div class="c-label">Facebook</div><div class="c-val">muraqbaads</div></div></div>
+          <div class="c-item"><div class="c-icon">📍</div><div><div class="c-label">Location</div><div class="c-val">Kasur / Lahore, Punjab, Pakistan</div></div></div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>Send us a message</h3>
+        <div class="form-group"><label>Your Name</label><input type="text" placeholder="e.g. Ayesha Khan"/></div>
+        <div class="form-group"><label>WhatsApp Number</label><input type="text" placeholder="+92 300 0000000"/></div>
+        <div class="form-group"><label>Business Type</label>
+          <select>
+            <option value="">Select your business type</option>
+            <option>Women's Clothing Brand</option>
+            <option>Digital Product Seller</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Tell Us About Your Brand</label><textarea placeholder="What do you sell? What's your challenge? What results are you looking for?"></textarea></div>
+        <button class="form-submit" onclick="handleSubmit()">Send Message →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="f-name">MURAQBA</div>
+        <div class="f-urdu">مراقبہ</div>
+        <p>A results-first digital marketing agency based in Lahore, Pakistan. We help clothing brands and digital product sellers grow — and you only pay after seeing real results.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Facebook & Instagram Ads</a></li>
+          <li><a href="#services">Full Brand Setup</a></li>
+          <li><a href="#services">Content Creation</a></li>
+          <li><a href="#services">Lead Generation</a></li>
+          <li><a href="#services">Brand Roadmap</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:dearshanmushtaq@gmail.com">dearshanmushtaq@gmail.com</a></li>
+          <li><a href="https://instagram.com/muraqba" target="_blank">@muraqba</a></li>
+          <li><a href="https://facebook.com/muraqbaads" target="_blank">muraqbaads</a></li>
+          <li><a href="#contact">Book Free Audit</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 MURAQBA. All rights reserved. Kasur / Lahore, Pakistan.</p>
+      <div class="footer-slogan">WE OBSERVE. WE TARGET. WE SCALE.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu
+document.getElementById('menuToggle').onclick = function(){
+  document.getElementById('navLinks').classList.toggle('open');
+};
+
+// Smooth nav highlight
+window.addEventListener('scroll', function(){
+  const nav = document.querySelector('nav');
+  nav.style.background = window.scrollY > 50 ? 'rgba(28,26,21,0.98)' : 'rgba(28,26,21,0.97)';
+});
+
+// Contact form
+function handleSubmit(){
+  const btn = document.querySelector('.form-submit');
+  btn.textContent = '✓ Message Sent — We\'ll contact you on WhatsApp soon!';
+  btn.style.background = '#9D9883';
+  btn.disabled = true;
+}
+</script>
+</body>
+</html>
