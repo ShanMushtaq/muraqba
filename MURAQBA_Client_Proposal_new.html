@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>MURAQBA — Client Proposal</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Outfit',sans-serif;background:#111;color:#28251E;overflow:hidden;}
+
+/* ── TOOLBAR ── */
+.toolbar{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(0,0,0,0.9);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:52px;border-bottom:1px solid rgba(255,255,255,0.06);}
+.tb-left{display:flex;align-items:center;gap:16px;}
+.tb-logo{font-family:'Cormorant Garamond',serif;font-size:16px;color:#fff;letter-spacing:0.12em;}
+.tb-divider{width:1px;height:20px;background:rgba(255,255,255,0.1);}
+.tb-slide-info{font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:0.08em;}
+.tb-right{display:flex;align-items:center;gap:10px;}
+.tb-btn{padding:7px 16px;border-radius:4px;font-size:11px;letter-spacing:0.08em;cursor:pointer;font-family:'Outfit',sans-serif;font-weight:500;border:none;transition:all 0.15s;}
+.tb-btn.outline{background:transparent;color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.15);}
+.tb-btn.outline:hover{color:#fff;border-color:rgba(255,255,255,0.3);}
+.tb-btn.accent{background:#BE8E6F;color:#fff;}
+.tb-btn.accent:hover{opacity:0.85;}
+
+/* ── DECK ── */
+.deck{position:fixed;top:52px;left:0;right:0;bottom:52px;display:flex;align-items:center;justify-content:center;padding:20px;}
+.slide{position:absolute;width:100%;max-width:960px;aspect-ratio:16/9;border-radius:10px;overflow:hidden;opacity:0;transform:translateX(60px) scale(0.97);transition:all 0.45s cubic-bezier(0.4,0,0.2,1);pointer-events:none;box-shadow:0 30px 80px rgba(0,0,0,0.6);}
+.slide.active{opacity:1;transform:translateX(0) scale(1);pointer-events:all;}
+.slide.prev{opacity:0;transform:translateX(-60px) scale(0.97);}
+
+/* ── NAVBAR BOTTOM ── */
+.nav-bar{position:fixed;bottom:0;left:0;right:0;z-index:200;background:rgba(0,0,0,0.9);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;gap:16px;height:52px;border-top:1px solid rgba(255,255,255,0.06);}
+.nav-btn{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.15s;}
+.nav-btn:hover{background:rgba(255,255,255,0.12);}
+.nav-btn:disabled{opacity:0.25;cursor:not-allowed;}
+.dots{display:flex;gap:8px;align-items:center;}
+.dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.2);cursor:pointer;transition:all 0.2s;}
+.dot.active{background:#BE8E6F;width:22px;border-radius:4px;}
+
+/* ══════════════════════════════════════════
+   SLIDE DESIGNS
+══════════════════════════════════════════ */
+
+/* ── SLIDE 1: COVER ── */
+.s1{background:#1C1A15;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:48px;}
+.s1::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,rgba(190,142,111,0.12) 0%,transparent 60%);}
+.s1::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#BE8E6F,transparent);}
+.s1-tag{font-size:9px;font-weight:600;letter-spacing:0.3em;color:#BE8E6F;text-transform:uppercase;margin-bottom:8px;opacity:0.8;}
+.s1-prepared{font-size:11px;color:rgba(255,255,255,0.25);letter-spacing:0.15em;margin-bottom:6px;}
+.s1-client{font-size:18px;font-weight:500;color:rgba(255,255,255,0.85);letter-spacing:0.06em;margin-bottom:24px;}
+.s1-icon{width:64px;height:64px;border-radius:50%;background:rgba(190,142,111,0.12);border:1px solid rgba(190,142,111,0.25);display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 22px;}
+.s1 h1{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,6vw,68px);font-weight:300;color:#fff;letter-spacing:0.22em;line-height:1;}
+.s1-urdu{font-size:13px;color:rgba(255,255,255,0.25);letter-spacing:0.2em;margin-top:6px;margin-bottom:18px;}
+.s1-line{width:50px;height:1px;background:#BE8E6F;margin:0 auto 16px;}
+.s1-slogan{font-family:'Cormorant Garamond',serif;font-size:clamp(13px,1.6vw,17px);color:#BE8E6F;letter-spacing:0.1em;font-style:italic;}
+.s1-meta{position:absolute;bottom:28px;right:36px;text-align:right;}
+.s1-meta p{font-size:9px;color:rgba(255,255,255,0.2);line-height:1.9;letter-spacing:0.06em;}
+.s1-meta span{color:rgba(255,255,255,0.45);}
+.s1-num{position:absolute;top:24px;left:36px;font-family:'Cormorant Garamond',serif;font-size:60px;font-weight:300;color:rgba(255,255,255,0.04);line-height:1;}
+
+/* ── SLIDE 2: WHO WE ARE ── */
+.s2{background:#F7F0E6;display:grid;grid-template-columns:1fr 1fr;padding:0;overflow:hidden;}
+.s2-left{background:#1C1A15;padding:44px 36px;display:flex;flex-direction:column;justify-content:center;position:relative;}
+.s2-left::after{content:'';position:absolute;top:0;right:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,#BE8E6F,transparent);}
+.s2-left .slide-num{font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:300;color:rgba(255,255,255,0.03);position:absolute;top:10px;left:20px;line-height:1;}
+.s2-tag{font-size:9px;font-weight:700;letter-spacing:0.22em;color:#BE8E6F;text-transform:uppercase;margin-bottom:10px;}
+.s2-left h2{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,44px);font-weight:400;color:#fff;line-height:1.1;margin-bottom:14px;}
+.s2-bar{width:36px;height:2px;background:#BE8E6F;margin-bottom:16px;border-radius:1px;}
+.s2-left p{font-size:12px;color:rgba(255,255,255,0.45);line-height:1.8;}
+.s2-badges{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px;}
+.s2-badge{padding:4px 12px;background:rgba(255,255,255,0.05);border:1px solid rgba(190,142,111,0.25);border-radius:20px;font-size:10px;color:rgba(255,255,255,0.45);}
+.s2-right{padding:32px 30px;display:flex;flex-direction:column;justify-content:center;gap:10px;}
+.s2-card{background:rgba(255,255,255,0.7);border:1px solid #E2CCB0;border-radius:7px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;}
+.s2-card-icon{width:34px;height:34px;border-radius:6px;background:#1C1A15;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.s2-card h3{font-size:12px;font-weight:600;color:#28251E;margin-bottom:3px;}
+.s2-card p{font-size:11px;color:#5C5848;line-height:1.55;}
+
+/* ── SLIDE 3: WHAT WE DO ── */
+.s3{background:#28251E;padding:44px 48px;display:flex;flex-direction:column;justify-content:center;}
+.s3::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 80%,rgba(190,142,111,0.08) 0%,transparent 60%);}
+.s3-tag{font-size:9px;font-weight:700;letter-spacing:0.22em;color:#BE8E6F;text-transform:uppercase;margin-bottom:8px;}
+.s3 h2{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.2vw,40px);font-weight:400;color:#fff;line-height:1.1;margin-bottom:10px;}
+.s3-bar{width:36px;height:2px;background:#BE8E6F;margin-bottom:20px;border-radius:1px;}
+.s3-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;}
+.s3-svc{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:16px 12px;position:relative;overflow:hidden;transition:all 0.2s;}
+.s3-svc:hover{background:rgba(190,142,111,0.08);border-color:rgba(190,142,111,0.2);}
+.s3-svc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#BE8E6F,transparent);opacity:0;}
+.s3-svc:hover::before{opacity:1;}
+.s3-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:#BE8E6F;opacity:0.4;margin-bottom:10px;line-height:1;}
+.s3-svc h3{font-size:11px;font-weight:600;color:#fff;margin-bottom:6px;line-height:1.4;}
+.s3-svc p{font-size:10px;color:rgba(255,255,255,0.35);line-height:1.6;}
+.s3-usp{margin-top:14px;padding:12px 16px;background:rgba(190,142,111,0.1);border:1px solid rgba(190,142,111,0.2);border-radius:6px;display:flex;align-items:center;gap:12px;}
+.s3-usp p{font-size:11px;color:rgba(255,255,255,0.5);line-height:1.6;}
+.s3-usp strong{color:#BE8E6F;}
+
+/* ── SLIDE 4: PROCESS ── */
+.s4{background:#F6E7D1;padding:44px 48px;display:flex;flex-direction:column;justify-content:center;}
+.s4-tag{font-size:9px;font-weight:700;letter-spacing:0.22em;color:#BE8E6F;text-transform:uppercase;margin-bottom:8px;}
+.s4 h2{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.2vw,40px);font-weight:400;color:#28251E;line-height:1.1;margin-bottom:10px;}
+.s4-bar{width:36px;height:2px;background:#BE8E6F;margin-bottom:22px;border-radius:1px;}
+.s4-steps{display:flex;gap:0;align-items:stretch;}
+.s4-step{flex:1;position:relative;padding:18px 14px 18px 16px;}
+.s4-step::after{content:'▶';position:absolute;right:-8px;top:50%;transform:translateY(-50%);color:#BE8E6F;font-size:10px;z-index:2;}
+.s4-step:last-child::after{display:none;}
+.s4-step:nth-child(odd){background:rgba(255,255,255,0.65);border-radius:8px;}
+.s4-step:nth-child(even){background:rgba(255,255,255,0.35);border-radius:8px;}
+.s4-circle{width:36px;height:36px;border-radius:50%;background:#1C1A15;display:flex;align-items:center;justify-content:center;margin-bottom:10px;}
+.s4-circle span{font-size:12px;font-weight:600;color:#BE8E6F;}
+.s4-step h3{font-size:12px;font-weight:700;color:#28251E;margin-bottom:5px;text-transform:uppercase;letter-spacing:0.05em;}
+.s4-step p{font-size:10px;color:#5C5848;line-height:1.6;}
+.s4-note{margin-top:14px;padding:12px 16px;background:rgba(28,26,21,0.06);border-radius:6px;border-left:3px solid #BE8E6F;}
+.s4-note p{font-size:11px;color:#5C5848;line-height:1.65;}
+.s4-note strong{color:#28251E;}
+
+/* ── SLIDE 5: PRICING ── */
+.s5{background:#1C1A15;padding:36px 44px;display:flex;flex-direction:column;justify-content:center;}
+.s5::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(190,142,111,0.1) 0%,transparent 60%);}
+.s5-tag{font-size:9px;font-weight:700;letter-spacing:0.22em;color:#BE8E6F;text-transform:uppercase;margin-bottom:8px;}
+.s5 h2{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.2vw,40px);font-weight:400;color:#fff;line-height:1.1;margin-bottom:10px;}
+.s5-bar{width:36px;height:2px;background:#BE8E6F;margin-bottom:18px;border-radius:1px;}
+.s5-pkgs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px;}
+.s5-pkg{border-radius:8px;padding:18px 16px;position:relative;overflow:hidden;}
+.s5-pkg.featured{border:1px solid rgba(190,142,111,0.4);}
+.s5-pkg.featured::before{content:'RECOMMENDED';position:absolute;top:10px;right:-22px;background:#BE8E6F;color:#fff;font-size:7px;font-weight:700;letter-spacing:0.15em;padding:3px 28px;transform:rotate(45deg);transform-origin:center;}
+.s5-pkg-lbl{font-size:8px;letter-spacing:0.2em;opacity:0.5;text-transform:uppercase;color:#fff;margin-bottom:4px;}
+.s5-pkg-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:#fff;margin-bottom:6px;}
+.s5-pkg-price{font-size:16px;font-weight:700;color:#fff;padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.12);}
+.s5-pkg-price span{font-size:10px;font-weight:400;opacity:0.5;}/month
+.s5-pkg-item{font-size:10px;color:rgba(255,255,255,0.65);margin-bottom:5px;line-height:1.4;}
+.s5-custom{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:6px;}
+.s5-custom p{font-size:11px;color:rgba(255,255,255,0.4);}
+.s5-custom strong{color:#BE8E6F;}
+.s5-custom .s5-tag2{font-size:10px;color:#BE8E6F;letter-spacing:0.06em;}
+
+/* ── SLIDE 6: NEXT STEPS ── */
+.s6{background:#F7F0E6;padding:40px 48px;display:flex;flex-direction:column;justify-content:center;}
+.s6-tag{font-size:9px;font-weight:700;letter-spacing:0.22em;color:#BE8E6F;text-transform:uppercase;margin-bottom:8px;}
+.s6 h2{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.2vw,40px);font-weight:400;color:#28251E;line-height:1.1;margin-bottom:10px;}
+.s6-bar{width:36px;height:2px;background:#BE8E6F;margin-bottom:18px;border-radius:1px;}
+.s6-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;}
+.s6-item{background:rgba(255,255,255,0.65);border:1px solid #E2CCB0;border-radius:8px;padding:14px 14px;display:flex;gap:10px;}
+.s6-day{width:40px;height:40px;border-radius:6px;background:#1C1A15;display:flex;align-items:center;justify-content:center;flex-shrink:0;text-align:center;}
+.s6-day span{font-size:9px;font-weight:700;color:#BE8E6F;letter-spacing:0.05em;line-height:1.3;}
+.s6-item h3{font-size:11px;font-weight:700;color:#28251E;margin-bottom:3px;text-transform:uppercase;letter-spacing:0.04em;}
+.s6-item p{font-size:10px;color:#5C5848;line-height:1.55;}
+.s6-cta{background:#1C1A15;border-radius:8px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;}
+.s6-cta-left h3{font-family:'Cormorant Garamond',serif;font-size:18px;color:#fff;font-weight:400;margin-bottom:3px;}
+.s6-cta-left p{font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:0.04em;}
+.s6-cta-right{display:flex;flex-direction:column;align-items:flex-end;gap:4px;}
+.s6-cta-right span{font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:0.06em;}
+.s6-cta-right strong{font-size:11px;color:#BE8E6F;}
+
+@media print{
+  body{overflow:visible;background:#fff;}
+  .toolbar,.nav-bar{display:none;}
+  .deck{position:static;padding:0;}
+  .slide{position:static;opacity:1!important;transform:none!important;pointer-events:all;box-shadow:none;border-radius:0;page-break-after:always;max-width:100%;aspect-ratio:16/9;}
+}
+</style>
+</head>
+<body>
+
+<!-- TOOLBAR -->
+<div class="toolbar">
+  <div class="tb-left">
+    <div class="tb-logo">MURAQBA</div>
+    <div class="tb-divider"></div>
+    <div class="tb-slide-info" id="slideInfo">Slide 1 of 6</div>
+  </div>
+  <div class="tb-right">
+    <button class="tb-btn outline" onclick="window.print()">⬇ Save PDF</button>
+    <button class="tb-btn outline" id="editBtn" onclick="toggleEdit()">✏ Edit Client Details</button>
+  </div>
+</div>
+
+<!-- DECK -->
+<div class="deck">
+
+  <!-- SLIDE 1: COVER -->
+  <div class="slide s1 active" data-index="0">
+    <div class="s1-num">01</div>
+    <div class="s1-tag">Digital Marketing Proposal</div>
+    <div class="s1-prepared">Prepared For</div>
+    <div class="s1-client" contenteditable="false" id="clientName">[CLIENT / BRAND NAME]</div>
+    <div class="s1-icon">◈</div>
+    <h1>MURAQBA</h1>
+    <div class="s1-urdu">مراقبہ · Focused Awareness</div>
+    <div class="s1-line"></div>
+    <div class="s1-slogan">WE OBSERVE. WE TARGET. WE SCALE.</div>
+    <div class="s1-meta">
+      <p>Prepared by: <span>Shanu — Founder</span><br>
+      Date: <span contenteditable="false" id="propDate">[DATE]</span><br>
+      Email: <span>dearshanmushtaq@gmail.com</span><br>
+      IG: <span>@muraqba</span></p>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: WHO WE ARE -->
+  <div class="slide s2" data-index="1">
+    <div class="s2-left">
+      <div class="slide-num">02</div>
+      <div class="s2-tag">About MURAQBA</div>
+      <h2>Who<br>We Are</h2>
+      <div class="s2-bar"></div>
+      <p>A results-first digital marketing agency based in Lahore, Pakistan. We help clothing brands and digital product sellers grow — and you only pay after seeing real results.</p>
+      <div class="s2-badges">
+        <span class="s2-badge">Meta Ads Certified</span>
+        <span class="s2-badge">Lahore, Pakistan</span>
+        <span class="s2-badge">Est. 2025</span>
+      </div>
+    </div>
+    <div class="s2-right">
+      <div class="s2-card">
+        <div class="s2-card-icon">🎯</div>
+        <div><h3>Our Promise</h3><p>You only pay after we achieve the agreed milestone. Zero financial risk for you upfront.</p></div>
+      </div>
+      <div class="s2-card">
+        <div class="s2-card-icon">🎓</div>
+        <div><h3>Certified Expertise</h3><p>Full Stack Digital Marketing certified from IDEOVERSITY Lahore. Specialised in Meta Ads.</p></div>
+      </div>
+      <div class="s2-card">
+        <div class="s2-card-icon">👁</div>
+        <div><h3>Our Philosophy</h3><p>MURAQBA means "focused awareness." We observe deeply before we act — no guesswork.</p></div>
+      </div>
+      <div class="s2-card">
+        <div class="s2-card-icon">🌍</div>
+        <div><h3>Who We Serve</h3><p>Women's clothing brands & digital product sellers — Pakistan, Gulf, and UK diaspora.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: WHAT WE DO -->
+  <div class="slide s3" data-index="2">
+    <div class="s3-tag">Our Services</div>
+    <h2>What We Do</h2>
+    <div class="s3-bar"></div>
+    <div class="s3-grid">
+      <div class="s3-svc">
+        <div class="s3-num">01</div>
+        <h3>Facebook & Instagram Ads</h3>
+        <p>Campaign setup, targeting, A/B testing, weekly optimisation & reports</p>
+      </div>
+      <div class="s3-svc">
+        <div class="s3-num">02</div>
+        <h3>Full Brand Setup</h3>
+        <p>Page setup, bio, highlights, cover design, link-in-bio — from zero</p>
+      </div>
+      <div class="s3-svc">
+        <div class="s3-num">03</div>
+        <h3>Content Creation</h3>
+        <p>12–16 posts/month, captions, hashtag research, content calendar</p>
+      </div>
+      <div class="s3-svc">
+        <div class="s3-num">04</div>
+        <h3>Lead Generation</h3>
+        <p>Targeted campaigns that generate real inquiries and purchase intent</p>
+      </div>
+      <div class="s3-svc">
+        <div class="s3-num">05</div>
+        <h3>Brand Roadmap</h3>
+        <p>7-day action plan + 30-day growth roadmap for new brands</p>
+      </div>
+    </div>
+    <div class="s3-usp">
+      <p>🔒 <strong>MURAQBA Guarantee:</strong> Every service is backed by our results-first model. You pay 30% upfront — the remaining 70% only after we hit the agreed milestone together.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: PROCESS -->
+  <div class="slide s4" data-index="3">
+    <div class="s4-tag">How It Works</div>
+    <h2>Our Process</h2>
+    <div class="s4-bar"></div>
+    <div class="s4-steps">
+      <div class="s4-step">
+        <div class="s4-circle"><span>1</span></div>
+        <h3>Audit</h3>
+        <p>We review your current presence, identify gaps, and analyse competitors & your target audience thoroughly.</p>
+      </div>
+      <div class="s4-step">
+        <div class="s4-circle"><span>2</span></div>
+        <h3>Strategy</h3>
+        <p>We build your 30-day roadmap, content plan, and ad targeting strategy — all before spending a single rupee.</p>
+      </div>
+      <div class="s4-step">
+        <div class="s4-circle"><span>3</span></div>
+        <h3>Launch</h3>
+        <p>Pages set up, content approved, first campaign goes live — all within 7 days of signing the agreement.</p>
+      </div>
+      <div class="s4-step">
+        <div class="s4-circle"><span>4</span></div>
+        <h3>Optimise</h3>
+        <p>Weekly performance checks, A/B testing, audience refinement, and content improvements throughout the month.</p>
+      </div>
+      <div class="s4-step">
+        <div class="s4-circle"><span>5</span></div>
+        <h3>Results</h3>
+        <p>Milestone achieved — leads, sales, or growth confirmed. You pay the remaining 70% balance. That's our deal.</p>
+      </div>
+    </div>
+    <div class="s4-note">
+      <p><strong>Timeline:</strong> Full setup within 7 days of onboarding. First results visible within 14–21 days. Reporting every 3–4 days via WhatsApp throughout the entire campaign.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: PRICING -->
+  <div class="slide s5" data-index="4">
+    <div class="s5-tag">Investment</div>
+    <h2>Pricing</h2>
+    <div class="s5-bar"></div>
+    <div class="s5-pkgs">
+      <div class="s5-pkg" style="background:#9D9883;">
+        <div class="s5-pkg-lbl">Package 01</div>
+        <div class="s5-pkg-name">STARTER</div>
+        <div class="s5-pkg-price">PKR 15,000 <span>/month</span></div>
+        <div class="s5-pkg-item">✓ Brand setup (page + profile)</div>
+        <div class="s5-pkg-item">✓ 8 posts per month</div>
+        <div class="s5-pkg-item">✓ Basic page management</div>
+        <div class="s5-pkg-item">✓ Monthly snapshot</div>
+      </div>
+      <div class="s5-pkg featured" style="background:#8A8370;">
+        <div class="s5-pkg-lbl">Package 02</div>
+        <div class="s5-pkg-name">GROWTH</div>
+        <div class="s5-pkg-price">PKR 30,000 <span>/month</span></div>
+        <div class="s5-pkg-item">✓ 16 posts per month</div>
+        <div class="s5-pkg-item">✓ Facebook Ads management</div>
+        <div class="s5-pkg-item">✓ Monthly analytics report</div>
+        <div class="s5-pkg-item">✓ 30-day brand roadmap</div>
+      </div>
+      <div class="s5-pkg" style="background:#BE8E6F;">
+        <div class="s5-pkg-lbl">Package 03</div>
+        <div class="s5-pkg-name">SCALE</div>
+        <div class="s5-pkg-price">PKR 55,000 <span>/month</span></div>
+        <div class="s5-pkg-item">✓ Everything in Growth</div>
+        <div class="s5-pkg-item">✓ Lead generation campaigns</div>
+        <div class="s5-pkg-item">✓ Bi-weekly strategy calls</div>
+        <div class="s5-pkg-item">✓ Priority support</div>
+      </div>
+    </div>
+    <div class="s5-custom">
+      <div>
+        <p>Recommended for this client: <strong contenteditable="false" id="recPkg">[PACKAGE NAME] — PKR [PRICE]/month]</strong></p>
+        <p style="margin-top:3px;">Advance: <strong style="color:#BE8E6F;" contenteditable="false" id="advAmt">PKR [30% ADVANCE]</strong> &nbsp;·&nbsp; Balance after results: <strong style="color:#BE8E6F;" contenteditable="false" id="balAmt">PKR [70% BALANCE]</strong></p>
+      </div>
+      <div class="s5-tag2">Ad budget is separate &amp; paid directly to Meta by client (min. PKR 5,000)</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: NEXT STEPS -->
+  <div class="slide s6" data-index="5">
+    <div class="s6-tag">What Happens Next</div>
+    <h2>Your First 7 Days</h2>
+    <div class="s6-bar"></div>
+    <div class="s6-grid">
+      <div class="s6-item">
+        <div class="s6-day"><span>Day<br>1</span></div>
+        <div><h3>Onboarding</h3><p>Discovery call, brand assets collected, page access granted, milestone goal confirmed.</p></div>
+      </div>
+      <div class="s6-item">
+        <div class="s6-day"><span>Day<br>2</span></div>
+        <div><h3>Audit</h3><p>Full review of your current presence. Gaps, strengths, and quick wins identified.</p></div>
+      </div>
+      <div class="s6-item">
+        <div class="s6-day"><span>Day<br>3</span></div>
+        <div><h3>Roadmap</h3><p>Your personalised 30-day growth roadmap and content strategy delivered for approval.</p></div>
+      </div>
+      <div class="s6-item">
+        <div class="s6-day"><span>Day<br>4–5</span></div>
+        <div><h3>Setup & Content</h3><p>Pages optimised. First content batch created and sent to you for review.</p></div>
+      </div>
+      <div class="s6-item">
+        <div class="s6-day"><span>Day<br>6</span></div>
+        <div><h3>Launch</h3><p>First ad campaign live. Tracking, pixels, and reporting fully configured.</p></div>
+      </div>
+      <div class="s6-item">
+        <div class="s6-day"><span>Day<br>7</span></div>
+        <div><h3>First Report</h3><p>Performance snapshot delivered. You see exactly what's live and what's working.</p></div>
+      </div>
+    </div>
+    <div class="s6-cta">
+      <div class="s6-cta-left">
+        <h3>Ready to move forward?</h3>
+        <p>Reply to this proposal or send a WhatsApp message to confirm.</p>
+      </div>
+      <div class="s6-cta-right">
+        <span>dearshanmushtaq@gmail.com</span>
+        <strong>@muraqba · muraqbaads</strong>
+        <span style="font-family:'Cormorant Garamond',serif;font-style:italic;color:rgba(255,255,255,0.25);">WE OBSERVE. WE TARGET. WE SCALE.</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- NAV BAR -->
+<div class="nav-bar">
+  <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)" disabled>←</button>
+  <div class="dots" id="dots"></div>
+  <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">→</button>
+</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const totalSlides = slides.length;
+let current = 0;
+
+// Build dots
+const dotsContainer = document.getElementById('dots');
+slides.forEach((_, i) => {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === 0 ? ' active' : '');
+  d.onclick = () => goTo(i);
+  dotsContainer.appendChild(d);
+});
+
+function goTo(n) {
+  slides[current].classList.remove('active');
+  slides[current].classList.add('prev');
+  setTimeout(() => slides[current].classList.remove('prev'), 450);
+  current = n;
+  slides[current].classList.add('active');
+  document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+  document.getElementById('slideInfo').textContent = 'Slide ' + (current + 1) + ' of ' + totalSlides;
+  document.getElementById('prevBtn').disabled = current === 0;
+  document.getElementById('nextBtn').disabled = current === totalSlides - 1;
+}
+
+function changeSlide(dir) {
+  const next = current + dir;
+  if (next >= 0 && next < totalSlides) goTo(next);
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changeSlide(1);
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') changeSlide(-1);
+});
+
+// Edit mode
+let editMode = false;
+function toggleEdit() {
+  editMode = !editMode;
+  const editables = ['clientName','propDate','recPkg','advAmt','balAmt'];
+  editables.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.contentEditable = editMode ? 'true' : 'false';
+      el.style.outline = editMode ? '1px dashed rgba(190,142,111,0.5)' : 'none';
+      el.style.borderRadius = '3px';
+      el.style.padding = editMode ? '2px 4px' : '0';
+    }
+  });
+  const btn = document.getElementById('editBtn');
+  btn.textContent = editMode ? '✓ Done Editing' : '✏ Edit Client Details';
+  btn.className = editMode ? 'tb-btn accent' : 'tb-btn outline';
+}
+</script>
+</body>
+</html>
