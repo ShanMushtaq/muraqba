@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>MURAQBA — Client Proposal</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Outfit',sans-serif;background:#1C1A15;color:#28251E;}
+.no-print{text-align:center;padding:16px;background:#000;}
+.no-print button{padding:10px 28px;background:#BE8E6F;color:#fff;border:none;border-radius:4px;font-size:13px;cursor:pointer;font-family:'Outfit',sans-serif;margin:0 6px;}
+@media print{.no-print{display:none;} .slide{page-break-after:always;}}
+
+/* SLIDE BASE */
+.slide{width:100%;aspect-ratio:16/9;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:60px;position:relative;overflow:hidden;page-break-after:always;}
+@media screen{.slide{max-width:900px;margin:20px auto;box-shadow:0 20px 60px rgba(0,0,0,0.4);}}
+
+/* SLIDE 1 — COVER */
+.s1{background:#1C1A15;}
+.s1::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(190,142,111,0.12) 0%,transparent 70%);}
+.s1-icon{width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,0.05);border:1px solid rgba(190,142,111,0.3);display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:24px;}
+.s1-prepared{font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px;}
+.s1 h1{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,56px);font-weight:300;color:#fff;letter-spacing:0.2em;margin-bottom:6px;}
+.s1-urdu{font-size:14px;color:rgba(255,255,255,0.3);letter-spacing:0.2em;margin-bottom:20px;}
+.s1-line{width:50px;height:1px;background:#BE8E6F;margin:0 auto 18px;}
+.s1-slogan{font-family:'Cormorant Garamond',serif;font-size:clamp(13px,1.8vw,17px);color:#BE8E6F;letter-spacing:0.1em;}
+.s1-for{position:absolute;bottom:36px;right:48px;text-align:right;}
+.s1-for p{font-size:10px;color:rgba(255,255,255,0.25);letter-spacing:0.1em;line-height:1.8;}
+.s1-for span{color:rgba(255,255,255,0.5);}
+
+/* SLIDE 2 — WHO WE ARE */
+.s2{background:#F7F0E6;align-items:flex-start;text-align:left;}
+.slide-num{position:absolute;top:36px;right:48px;font-size:10px;color:rgba(0,0,0,0.2);letter-spacing:0.15em;}
+.slide-tag{font-size:10px;font-weight:700;letter-spacing:0.2em;color:#BE8E6F;text-transform:uppercase;margin-bottom:10px;}
+.slide-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,48px);font-weight:500;color:#28251E;line-height:1.1;margin-bottom:14px;}
+.slide-bar{width:44px;height:2px;background:#BE8E6F;margin-bottom:22px;border-radius:1px;}
+.s2-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;margin-top:10px;}
+.s2-card{background:rgba(255,255,255,0.6);border:1px solid #E2CCB0;border-radius:6px;padding:16px 18px;}
+.s2-card h3{font-size:13px;font-weight:600;color:#28251E;margin-bottom:6px;}
+.s2-card p{font-size:11px;color:#5C5848;line-height:1.65;}
+.s2-intro{font-size:13px;color:#5C5848;line-height:1.75;max-width:560px;margin-bottom:6px;}
+
+/* SLIDE 3 — WHAT WE DO */
+.s3{background:#1C1A15;align-items:flex-start;text-align:left;}
+.s3 .slide-title{color:#fff;}
+.s3 .slide-tag{color:#BE8E6F;}
+.svc-row{display:flex;gap:10px;width:100%;margin-top:6px;}
+.svc-mini{flex:1;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:14px 12px;}
+.svc-mini-num{font-family:'Cormorant Garamond',serif;font-size:24px;color:#BE8E6F;opacity:0.6;margin-bottom:6px;}
+.svc-mini h3{font-size:11px;font-weight:600;color:#fff;margin-bottom:5px;line-height:1.4;}
+.svc-mini p{font-size:10px;color:rgba(255,255,255,0.4);line-height:1.6;}
+
+/* SLIDE 4 — PROCESS */
+.s4{background:#F6E7D1;align-items:flex-start;text-align:left;}
+.process-row{display:flex;gap:0;width:100%;margin-top:16px;}
+.proc-step{flex:1;padding:16px 14px;position:relative;}
+.proc-step::after{content:'→';position:absolute;right:-8px;top:50%;transform:translateY(-50%);color:#BE8E6F;font-size:16px;z-index:1;}
+.proc-step:last-child::after{display:none;}
+.proc-num{width:32px;height:32px;border-radius:50%;background:#1C1A15;display:flex;align-items:center;justify-content:center;color:#BE8E6F;font-size:12px;font-weight:600;margin-bottom:10px;}
+.proc-step h3{font-size:12px;font-weight:600;color:#28251E;margin-bottom:5px;}
+.proc-step p{font-size:10px;color:#5C5848;line-height:1.6;}
+
+/* SLIDE 5 — PRICING */
+.s5{background:#1C1A15;align-items:flex-start;text-align:left;}
+.s5 .slide-title{color:#fff;}
+.pkg-row{display:flex;gap:12px;width:100%;margin-top:12px;}
+.pkg-mini{flex:1;border-radius:8px;padding:18px 14px;color:#fff;}
+.pkg-mini .pm-lbl{font-size:8px;letter-spacing:0.2em;opacity:0.5;margin-bottom:4px;}
+.pkg-mini .pm-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;margin-bottom:6px;}
+.pkg-mini .pm-price{font-size:14px;font-weight:600;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:8px;margin-bottom:8px;}
+.pkg-mini .pm-item{font-size:10px;opacity:0.75;margin-bottom:4px;}
+.guarantee-box{width:100%;margin-top:12px;background:rgba(190,142,111,0.15);border:1px solid rgba(190,142,111,0.3);border-radius:6px;padding:12px 16px;display:flex;align-items:center;gap:12px;}
+.guarantee-box p{font-size:11px;color:rgba(255,255,255,0.6);line-height:1.6;}
+.guarantee-box span{font-size:18px;flex-shrink:0;}
+
+/* SLIDE 6 — NEXT STEPS */
+.s6{background:#F7F0E6;align-items:flex-start;text-align:left;}
+.next-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;margin-top:14px;}
+.next-item{background:rgba(255,255,255,0.65);border:1px solid #E2CCB0;border-radius:6px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;}
+.next-day{width:36px;height:36px;border-radius:6px;background:#1C1A15;display:flex;align-items:center;justify-content:center;color:#BE8E6F;font-size:10px;font-weight:600;flex-shrink:0;line-height:1.2;text-align:center;}
+.next-item h3{font-size:12px;font-weight:600;color:#28251E;margin-bottom:3px;}
+.next-item p{font-size:10px;color:#5C5848;line-height:1.55;}
+.cta-box{width:100%;margin-top:12px;background:#1C1A15;border-radius:6px;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;}
+.cta-box p{font-size:12px;color:rgba(255,255,255,0.5);}
+.cta-box a{font-size:11px;color:#BE8E6F;letter-spacing:0.08em;}
+</style>
+</head>
+<body>
+<div class="no-print">
+  <button onclick="window.print()">⬇ Save as PDF</button>
+  <button onclick="document.querySelectorAll('.slide-num,.s1-for').forEach(e=>e.style.display='none');document.querySelectorAll('[data-client]').forEach(e=>e.textContent='[Client Name]')">Reset Client Name</button>
+  <p style="color:rgba(255,255,255,0.3);font-size:11px;margin-top:8px;">Edit [CLIENT NAME] and [YOUR GOAL] before saving</p>
+</div>
+
+<!-- SLIDE 1: COVER -->
+<div class="slide s1">
+  <div class="s1-icon">◈</div>
+  <div class="s1-prepared">Prepared For</div>
+  <div style="font-size:22px;font-weight:500;color:#fff;letter-spacing:0.08em;margin-bottom:16px;">[CLIENT NAME / BRAND NAME]</div>
+  <div class="s1-line"></div>
+  <h1>MURAQBA</h1>
+  <div class="s1-urdu">مراقبہ · Focused Awareness</div>
+  <div class="s1-slogan">WE OBSERVE. WE TARGET. WE SCALE.</div>
+  <div class="s1-for">
+    <p>Prepared by: <span>Shanu, Founder</span><br>Date: <span>[DATE]</span><br>dearshanmushtaq@gmail.com</p>
+  </div>
+</div>
+
+<!-- SLIDE 2: WHO WE ARE -->
+<div class="slide s2">
+  <div class="slide-num">02 / 05</div>
+  <div class="slide-tag">About Us</div>
+  <div class="slide-title">Who We Are</div>
+  <div class="slide-bar"></div>
+  <p class="s2-intro">MURAQBA is a results-first digital marketing agency based in Lahore, Pakistan. We specialise in Facebook & Instagram advertising, brand management, and lead generation for clothing brands and digital product sellers.</p>
+  <div class="s2-grid">
+    <div class="s2-card"><h3>🎯 Our Promise</h3><p>You only pay us after we achieve the milestone we agreed on together. Zero financial risk for you.</p></div>
+    <div class="s2-card"><h3>📍 Based In</h3><p>Kasur / Lahore, Pakistan. Serving clients across Pakistan, Gulf, and the UK Pakistani community.</p></div>
+    <div class="s2-card"><h3>🎓 Certified</h3><p>Full Stack Digital Marketing certified from IDEOVERSITY, Lahore. Specialisation in Meta Ads.</p></div>
+    <div class="s2-card"><h3>🏆 Our Focus</h3><p>Women's clothing brands and digital product sellers who are new or stuck — and need real results.</p></div>
+  </div>
+</div>
+
+<!-- SLIDE 3: WHAT WE DO -->
+<div class="slide s3">
+  <div class="slide-num" style="color:rgba(255,255,255,0.2);">03 / 05</div>
+  <div class="slide-tag">Services</div>
+  <div class="slide-title">What We Do</div>
+  <div class="slide-bar"></div>
+  <div class="svc-row">
+    <div class="svc-mini"><div class="svc-mini-num">01</div><h3>Facebook & Instagram Ads</h3><p>Campaign setup, targeting, creatives, A/B testing, weekly optimisation</p></div>
+    <div class="svc-mini"><div class="svc-mini-num">02</div><h3>Full Brand Setup</h3><p>Page setup, bio, highlights, cover design, link in bio — from zero</p></div>
+    <div class="svc-mini"><div class="svc-mini-num">03</div><h3>Content Creation</h3><p>12–16 posts/month, captions, hashtags, content calendar, stories</p></div>
+    <div class="svc-mini"><div class="svc-mini-num">04</div><h3>Lead Generation</h3><p>Targeted campaigns built to generate real inquiries and buyers</p></div>
+    <div class="svc-mini"><div class="svc-mini-num">05</div><h3>Brand Roadmap</h3><p>7-day action plan + 30-day growth roadmap for new brands</p></div>
+  </div>
+</div>
+
+<!-- SLIDE 4: PROCESS -->
+<div class="slide s4">
+  <div class="slide-num">04 / 05</div>
+  <div class="slide-tag">How It Works</div>
+  <div class="slide-title">Our Process</div>
+  <div class="slide-bar"></div>
+  <div class="process-row">
+    <div class="proc-step"><div class="proc-num">1</div><h3>Audit</h3><p>We review your current presence, identify gaps, and analyse your target audience and competitors.</p></div>
+    <div class="proc-step"><div class="proc-num">2</div><h3>Strategy</h3><p>We build your 30-day roadmap, content strategy, and ad targeting plan — all before spending a rupee.</p></div>
+    <div class="proc-step"><div class="proc-num">3</div><h3>Launch</h3><p>Pages set up, content created and approved, first campaign goes live — all within 7 days of onboarding.</p></div>
+    <div class="proc-step"><div class="proc-num">4</div><h3>Optimise</h3><p>Weekly performance checks, A/B testing, audience refinement, and content improvements every month.</p></div>
+    <div class="proc-step"><div class="proc-num">5</div><h3>Results</h3><p>When we hit the agreed milestone — leads, sales, or growth — you pay the remaining balance. That's our deal.</p></div>
+  </div>
+</div>
+
+<!-- SLIDE 5: PRICING -->
+<div class="slide s5">
+  <div class="slide-num" style="color:rgba(255,255,255,0.2);">05 / 05</div>
+  <div class="slide-tag">Investment</div>
+  <div class="slide-title">Pricing & Next Steps</div>
+  <div class="slide-bar"></div>
+  <div class="pkg-row">
+    <div class="pkg-mini" style="background:#9D9883;"><div class="pm-lbl">STARTER</div><div class="pm-name">Starter</div><div class="pm-price">PKR 15,000/mo</div><div class="pm-item">✓ Brand setup</div><div class="pm-item">✓ 8 posts/month</div><div class="pm-item">✓ Page management</div></div>
+    <div class="pkg-mini" style="background:#8A8370;border:2px solid #BE8E6F;"><div class="pm-lbl">RECOMMENDED</div><div class="pm-name">Growth</div><div class="pm-price">PKR 30,000/mo</div><div class="pm-item">✓ 16 posts/month</div><div class="pm-item">✓ Facebook Ads</div><div class="pm-item">✓ Monthly report</div></div>
+    <div class="pkg-mini" style="background:#BE8E6F;"><div class="pm-lbl">SCALE</div><div class="pm-name">Scale</div><div class="pm-price">PKR 55,000/mo</div><div class="pm-item">✓ Lead gen campaigns</div><div class="pm-item">✓ Strategy calls</div><div class="pm-item">✓ Full calendar</div></div>
+  </div>
+  <div class="guarantee-box"><span>🔒</span><p><strong style="color:#fff;">Recommended for [CLIENT NAME]:</strong> [PACKAGE NAME] — PKR [PRICE]/month. You pay 30% advance (PKR [ADVANCE]) and the remaining 70% only after we hit [YOUR GOAL]. Ready to start? Reply to confirm.</p></div>
+</div>
+
+<!-- SLIDE 6: NEXT STEPS (7-Day Plan) -->
+<div class="slide s6">
+  <div class="slide-num">Bonus</div>
+  <div class="slide-tag">What Happens Next</div>
+  <div class="slide-title">Your First 7 Days With Us</div>
+  <div class="slide-bar"></div>
+  <div class="next-grid">
+    <div class="next-item"><div class="next-day">Day 1</div><div><h3>Onboarding Call</h3><p>We collect your brand assets, page access, and agree on the milestone goal together.</p></div></div>
+    <div class="next-item"><div class="next-day">Day 2</div><div><h3>Brand Audit</h3><p>Full review of your current presence. Gaps, strengths, and quick wins identified.</p></div></div>
+    <div class="next-item"><div class="next-day">Day 3</div><div><h3>Roadmap Delivery</h3><p>Your personalised 30-day growth roadmap delivered for your review and approval.</p></div></div>
+    <div class="next-item"><div class="next-day">Day 4–5</div><div><h3>Setup & Content</h3><p>Pages optimised. First content batch created and sent to you for approval.</p></div></div>
+    <div class="next-item"><div class="next-day">Day 6</div><div><h3>Campaign Launch</h3><p>First ad campaign goes live. Tracking and reporting configured.</p></div></div>
+    <div class="next-item"><div class="next-day">Day 7</div><div><h3>First Report</h3><p>You receive your first performance update. We show you exactly what's working.</p></div></div>
+  </div>
+  <div class="cta-box">
+    <p>Ready to start? Send a WhatsApp message or reply to this proposal.</p>
+    <a href="mailto:dearshanmushtaq@gmail.com">dearshanmushtaq@gmail.com · @muraqba · WE OBSERVE. WE TARGET. WE SCALE.</a>
+  </div>
+</div>
+
+</body>
+</html>
