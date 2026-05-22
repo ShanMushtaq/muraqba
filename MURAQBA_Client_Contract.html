@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>MURAQBA — Client Service Agreement</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Outfit',sans-serif;background:#F7F0E6;color:#28251E;}
+@media print{.no-print{display:none!important;}}
+.no-print{text-align:center;padding:14px;background:#1C1A15;position:sticky;top:0;z-index:100;}
+.no-print button{padding:10px 24px;background:#BE8E6F;color:#fff;border:none;border-radius:4px;font-size:13px;cursor:pointer;font-family:'Outfit',sans-serif;}
+.page{max-width:800px;margin:0 auto;background:#F7F0E6;}
+
+.hdr{background:#1C1A15;padding:28px 24px;}
+.hdr-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;}
+.hdr h1{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,5vw,30px);font-weight:300;color:#fff;letter-spacing:0.15em;}
+.hdr-sub{font-size:9px;color:rgba(255,255,255,0.3);letter-spacing:0.2em;margin-top:3px;}
+.hdr-right{text-align:right;}
+.hdr-right p{font-size:10px;color:rgba(255,255,255,0.3);line-height:1.8;}
+.hdr-right span{color:#BE8E6F;}
+
+.title-band{background:#BE8E6F;padding:14px 24px;}
+.title-band h2{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,4vw,22px);font-weight:500;color:#fff;}
+.title-band p{font-size:10px;color:rgba(255,255,255,0.6);margin-top:2px;}
+
+.parties{padding:24px;background:#F6E7D1;border-bottom:1px solid #E2CCB0;}
+.parties-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px;}
+.party-box{background:rgba(255,255,255,0.6);border:1px solid #E2CCB0;border-radius:6px;padding:14px 16px;}
+.party-lbl{font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#BE8E6F;margin-bottom:8px;}
+.field{margin-bottom:7px;}
+.field label{font-size:9px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#8A8370;display:block;margin-bottom:2px;}
+.field-val{border-bottom:1px solid #C8BFAE;padding-bottom:3px;font-size:12px;color:#28251E;min-height:18px;}
+
+.body{padding:0 24px;}
+.clause{border-bottom:1px solid #E2CCB0;padding:18px 0;}
+.clause:last-child{border-bottom:none;}
+.clause-hdr{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.clause-num{width:26px;height:26px;border-radius:50%;background:#1C1A15;display:flex;align-items:center;justify-content:center;color:#BE8E6F;font-size:10px;font-weight:600;flex-shrink:0;}
+.clause h3{font-size:12px;font-weight:700;color:#28251E;letter-spacing:0.04em;text-transform:uppercase;}
+.clause p{font-size:12px;color:#5C5848;line-height:1.75;margin-bottom:5px;}
+.clause ul{margin-left:16px;margin-top:5px;}
+.clause li{font-size:12px;color:#5C5848;line-height:1.7;margin-bottom:3px;}
+.clause li strong{color:#28251E;}
+.highlight{background:rgba(190,142,111,0.1);border-left:3px solid #BE8E6F;padding:10px 12px;border-radius:0 4px 4px 0;margin:8px 0;font-size:12px;color:#5C5848;line-height:1.7;}
+.fields-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px;}
+
+.sigs{background:#E8E9E1;padding:24px;}
+.sigs h3{font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#8A8370;margin-bottom:12px;}
+.sigs-note{font-size:12px;color:#5C5848;margin-bottom:16px;line-height:1.7;}
+.sig-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.sig-party{font-size:10px;font-weight:700;letter-spacing:0.12em;color:#BE8E6F;text-transform:uppercase;margin-bottom:12px;}
+.sig-line{border-bottom:1px solid #8A8370;height:40px;margin-bottom:5px;}
+.sig-label{font-size:10px;color:#8A8370;}
+.sig-fields{margin-top:12px;display:flex;flex-direction:column;gap:8px;}
+.sig-field{display:flex;gap:8px;align-items:baseline;}
+.sig-field label{font-size:10px;color:#8A8370;width:60px;flex-shrink:0;}
+.sf-val{flex:1;border-bottom:1px solid #C8BFAE;min-height:16px;font-size:12px;}
+
+.footer{background:#1C1A15;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.footer p{font-size:9px;color:rgba(255,255,255,0.2);}
+.footer span{font-size:9px;color:rgba(255,255,255,0.2);letter-spacing:0.1em;}
+
+/* ── MOBILE ── */
+@media(max-width:600px){
+  .hdr-right{display:none;}
+  .parties-grid{grid-template-columns:1fr;}
+  .fields-row{grid-template-columns:1fr;}
+  .sig-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="no-print"><button onclick="window.print()">⬇ Save as PDF</button></div>
+<div class="page">
+
+<div class="hdr">
+  <div class="hdr-top">
+    <div><h1>MURAQBA</h1><div class="hdr-sub">CLIENT SERVICE AGREEMENT · 2025</div></div>
+    <div class="hdr-right"><p>Agreement Date: <span>[DATE]</span><br>Agreement No: <span>MRQ-[NUMBER]</span><br>dearshanmushtaq@gmail.com</p></div>
+  </div>
+</div>
+
+<div class="title-band">
+  <h2>Digital Marketing Service Agreement</h2>
+  <p>This agreement is legally binding once signed by both parties. Please read all clauses carefully.</p>
+</div>
+
+<div class="parties">
+  <div class="party-lbl">Agreement Between</div>
+  <div class="parties-grid">
+    <div class="party-box">
+      <div class="party-lbl">Service Provider — MURAQBA</div>
+      <div class="field"><label>Full Name</label><div class="field-val">Shanu (Founder, MURAQBA)</div></div>
+      <div class="field"><label>Email</label><div class="field-val">dearshanmushtaq@gmail.com</div></div>
+      <div class="field"><label>Social</label><div class="field-val">@muraqba · muraqbaads</div></div>
+      <div class="field"><label>Location</label><div class="field-val">Kasur / Lahore, Pakistan</div></div>
+    </div>
+    <div class="party-box">
+      <div class="party-lbl">Client</div>
+      <div class="field"><label>Full Name</label><div class="field-val">&nbsp;</div></div>
+      <div class="field"><label>Brand / Business</label><div class="field-val">&nbsp;</div></div>
+      <div class="field"><label>WhatsApp</label><div class="field-val">&nbsp;</div></div>
+      <div class="field"><label>Location</label><div class="field-val">&nbsp;</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="body">
+  <div class="clause">
+    <div class="clause-hdr"><div class="clause-num">1</div><h3>Scope of Work</h3></div>
+    <p>MURAQBA agrees to provide the following services during the agreed contract period. Services outside this list are not included unless added via written addendum.</p>
+    <div class="fields-row">
+      <div class="field"><label>Package Selected</label><div class="field-val">&nbsp;</div></div>
+      <div class="field"><label>Monthly Fee</label><div class="field-val">PKR &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; / month</div></div>
+    </div>
+    <div class="field" style="margin-top:10px;"><label>Services Included</label><div class="field-val" style="min-height:44px;">&nbsp;</div></div>
+    <div class="field" style="margin-top:10px;"><label>Agreed Milestone / Goal</label><div class="field-val" style="min-height:28px;">&nbsp;</div></div>
+    <ul style="margin-top:8px;">
+      <li><strong>Not included:</strong> Full website development, product photography, guaranteed viral content, ads below PKR 5,000/month budget.</li>
+      <li>Additional services must be agreed in writing and will be priced separately.</li>
+    </ul>
+  </div>
+
+  <div class="clause">
+    <div class="clause-hdr"><div class="clause-num">2</div><h3>Payment Terms</h3></div>
+    <div class="highlight">MURAQBA operates on a results-first model. The client pays 30% advance upfront, and the remaining 70% only after the agreed milestone is achieved and demonstrated.</div>
+    <ul>
+      <li><strong>Advance (30%):</strong> PKR __________ — due before work begins. Covers setup and onboarding costs.</li>
+      <li><strong>Remaining (70%):</strong> PKR __________ — due within 3 days of milestone being achieved.</li>
+      <li><strong>Ad Budget:</strong> Separate from agency fee — paid directly to Meta by the client (minimum PKR 5,000).</li>
+      <li><strong>Late payment:</strong> Payments delayed beyond 5 days after milestone achievement may result in work being paused.</li>
+    </ul>
+  </div>
+
+  <div class="clause">
+    <div class="clause-hdr"><div class="clause-num">3</div><h3>Refund Policy</h3></div>
+    <ul>
+      <li><strong>Within 3 days of campaign launch:</strong> If the client is unsatisfied for any reasonable cause, the 30% advance is fully refundable.</li>
+      <li><strong>After 3 days:</strong> No refunds are issued. However, MURAQBA commits to continuing work until the agreed milestone is reached before collecting remaining payment.</li>
+      <li><strong>No refund</strong> if the client fails to provide required assets or approvals, causing delays.</li>
+    </ul>
+  </div>
+
+  <div class="clause">
+    <div class="clause-hdr"><div class="clause-num">4</div><h3>Revision Policy</h3></div>
+    <ul>
+      <li><strong>Ad Campaigns:</strong> Ad creatives and targeting are managed by MURAQBA professionally. Client revisions to ad campaigns are not included.</li>
+      <li><strong>Content Creation:</strong> Every client receives <strong>3 free revision rounds per month</strong>.</li>
+      <li><strong>Additional revisions</strong> beyond 3 rounds are charged at PKR 500 per revision request.</li>
+      <li>Revision requests must be made within 24 hours of content delivery.</li>
+    </ul>
+  </div>
+
+  <div class="clause">
+    <div class="clause-hdr"><div class="clause-num">5</div><h3>Ad Account & Asset Ownership</h3></div>
+    <div class="highlight">The client retains full ownership of their Facebook page, Instagram account, Meta Ads account, and all brand assets at all times.</div>
+    <ul>
+      <li><strong>Client's accounts:</strong> All social media pages and ad accounts belong to the client. MURAQBA receives temporary admin access to manage campaigns on the client's behalf.</li>
+      <li><strong>Content created:</strong> Original content created by MURAQBA becomes the client's property upon full payment.</li>
+      <li><strong>MURAQBA's strategies and templates</strong> remain the intellectual property of MURAQBA and may not be resold or distributed.</li>
+      <li><strong>Ad Spend:</strong> Money spent on ads is managed from the client's budget. MURAQBA holds no financial liability for ad spend results beyond professional management.</li>
+    </ul>
+  </div>
+
+  <div class="clause">
+    <div class="clause-hdr"><div class="clause-num">6</div><h3>Contract Duration & Termination</h3></div>
+    <div class="fields-row">
+      <div class="field"><label>Contract Start Date</label><div class="field-val">&nbsp;</div></div>
+      <div class="field"><label>Initial Duration</label><div class="field-val">30 days (renewable monthly)</div></div>
+    </div>
+    <ul style="margin-top:10px;">
+      <li>Either party may terminate with <strong>7 days written notice</strong> via WhatsApp or email.</li>
+      <li>If the client terminates after work has begun, the 30% advance is non-refundable.</li>
+      <li>MURAQBA may terminate immediately if the client provides false information or fails to provide required assets after 3 reminders.</li>
+      <li>Upon termination, MURAQBA will deliver all completed work within 48 hours.</li>
+    </ul>
+  </div>
+
+  <div class="clause">
+    <div class="clause-hdr"><div class="clause-num">7</div><h3>Confidentiality</h3></div>
+    <ul>
+      <li>Both parties agree to keep all shared information strictly confidential.</li>
+      <li>MURAQBA will not share client's product information, business data, or campaign results with third parties without written consent.</li>
+      <li>MURAQBA may use anonymised results (e.g. "increased leads by 40%") for portfolio purposes unless the client explicitly objects in writing.</li>
+    </ul>
+  </div>
+
+  <div class="clause">
+    <div class="clause-hdr"><div class="clause-num">8</div><h3>Client Responsibilities</h3></div>
+    <ul>
+      <li>Minimum 10 product photos or videos of acceptable quality</li>
+      <li>Facebook page and Instagram profile admin/manager access</li>
+      <li>Agreed monthly ad budget (separate, minimum PKR 5,000)</li>
+      <li>Timely responses to content approval requests (within 24 hours)</li>
+      <li>Honest and accurate information about products, pricing, and business goals</li>
+    </ul>
+    <div class="highlight" style="margin-top:8px;">Delays caused by the client's failure to provide required materials will not be counted against MURAQBA's milestone timeline.</div>
+  </div>
+
+  <div class="clause">
+    <div class="clause-hdr"><div class="clause-num">9</div><h3>Dispute Resolution</h3></div>
+    <ul>
+      <li>Both parties agree to resolve disputes through direct communication first — minimum 3 good-faith attempts via WhatsApp or email.</li>
+      <li>If unresolved, both parties agree to seek mediation before pursuing any legal action.</li>
+      <li>This agreement is governed by the laws of Pakistan.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="sigs">
+  <h3>Agreement & Signatures</h3>
+  <p class="sigs-note">By signing below, both parties confirm they have read, understood, and agreed to all terms. This agreement becomes binding upon signature by both parties.</p>
+  <div class="sig-grid">
+    <div>
+      <div class="sig-party">Service Provider — MURAQBA</div>
+      <div class="sig-line"></div>
+      <div class="sig-label">Signature</div>
+      <div class="sig-fields">
+        <div class="sig-field"><label>Name:</label><div class="sf-val">Shanu</div></div>
+        <div class="sig-field"><label>Title:</label><div class="sf-val">Founder, MURAQBA</div></div>
+        <div class="sig-field"><label>Date:</label><div class="sf-val">&nbsp;</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="sig-party">Client</div>
+      <div class="sig-line"></div>
+      <div class="sig-label">Signature</div>
+      <div class="sig-fields">
+        <div class="sig-field"><label>Name:</label><div class="sf-val">&nbsp;</div></div>
+        <div class="sig-field"><label>Brand:</label><div class="sf-val">&nbsp;</div></div>
+        <div class="sig-field"><label>Date:</label><div class="sf-val">&nbsp;</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>MURAQBA Client Service Agreement · 2025 · dearshanmushtaq@gmail.com</p>
+  <span>WE OBSERVE. WE TARGET. WE SCALE.</span>
+</div>
+</div>
+</body>
+</html>
